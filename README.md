@@ -10,3 +10,4 @@ This repo aligns with the SheetPros/OpenTax concept extending OData and UK Tax D
 
 Please comment/contribute/share/join!
 
+Also check https://github.com/SheetPros/OpenTax
