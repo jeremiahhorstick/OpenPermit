@@ -24,7 +24,7 @@ This broadens the competitive landscape and focus on optimizing specific permitt
 
 Use the best of class - maximal reliability, maximal security, standards-based-interoperability. 
 
-This focus includes MCP Agent frameworks, block-chain, traditional business data standards and engineering data attribution & markup standards where they are mature and gold-standard. 
+This focus includes MCP Agent frameworks, block-chain, traditional business data standards and engineering geodata attribution, markup standards where they are best in class. 
 
-Culminating open-source projects, comments & feedback. 
+Culminating open-source projects, comments & feedback, Sponsors, collaborators: Virginia Municipalities and the tech community. 
 
