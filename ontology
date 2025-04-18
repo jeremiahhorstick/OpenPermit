@@ -22,7 +22,7 @@ Properties:
 transactionID
 taxCode
 amount
-Project (Construction project linked to permits)
+Project (seeking permits)
 Properties:
 projectID
 location
