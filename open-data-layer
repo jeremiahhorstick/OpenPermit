@@ -1,0 +1,45 @@
+├── docs/
+│   ├── README.md
+│   ├── architecture.md
+│   └── api.md
+├── ontology/
+│   ├── open_data_ontology.owl
+│   ├── queries.sparql
+│   └── generate_ontology.py
+├── schema/
+│   ├── arangodb_setup.aql
+│   ├── sample_data.jsonld
+│   └── validate_schema.py
+├── src/
+│   ├── api/
+│   │   ├── main.py
+│   │   ├── models.py
+│   │   └── routes.py
+│   ├── db/
+│   │   ├── arango_client.py
+│   │   └── cache.py
+│   └── security/
+│   │   ├── auth.py
+│   │   └── encryption.py
+├── deploy/
+│   ├── docker-compose.yml
+│   ├── kubernetes/
+│   │   ├── arangodb.yaml
+│   │   ├── api.yaml
+│   │   └── haproxy.yaml
+│   ├── terraform/
+│   │   ├── main.tf
+│   │   └── variables.tf
+│   ├── scripts/
+│   │   ├── setup.sh
+│   │   ├── backup.sh
+│   │   └── vault-init.sh
+│   └── prometheus.yml
+├── tests/
+│   ├── test_api.py
+│   ├── test_queries.py
+│   └── test_security.py
+├── Jenkinsfile
+├── .gitignore
+├── LICENSE
+└── requirements.txt
