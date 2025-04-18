@@ -22,7 +22,7 @@ User groups will have unlimited choice for the application and abstraction layer
 
 This broadens the competitive landscape and focus on optimizing specific permitting cases. 
 
-Should use the best of class - maximal reliability, maximal security, standards-based-interoperability. 
+Use the best of class - maximal reliability, maximal security, standards-based-interoperability. 
 
 This focus includes MCP Agent frameworks, block-chain, traditional business data standards and engineering data attribution & markup standards where they are mature and gold-standard. 
 
