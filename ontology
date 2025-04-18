@@ -1,0 +1,238 @@
+Distilled Ontology Overview
+The goal is to streamline the ontology for practical use in OpenTax and OpenPermit, reducing complexity while maintaining interoperability for permit applications (e.g., building permits with DWG/DXF blueprints) and business tax transactions (e.g., filings with CSV/JSON data). The distilled version focuses on essential entities, relationships, and standards, making it easier to implement with gRPC and integrate into APIs.
+
+Core Classes
+Document (Abstract class for all file types)
+Properties:
+formatType (e.g., JSON, CSV, PDF, DWG, DXF)
+fileSize
+Subclasses:
+JSONDocument: For structured permit/tax metadata (jsonSchema).
+CSVDocument: For tabular tax records (delimiter).
+PDFDocument: For signed forms (hasDigitalSignature).
+DWGDocument: For proprietary CAD blueprints (cadVersion).
+DXFDocument: For interoperable CAD files (geometricEntities).
+PermitApplication (Permit process entity)
+Properties:
+applicationID
+status (e.g., pending, approved)
+submissionDate
+BusinessTaxTransaction (Tax process entity)
+Properties:
+transactionID
+taxCode
+amount
+Project (Construction project linked to permits)
+Properties:
+projectID
+location
+BusinessEntity (Applicant or taxpayer)
+Properties:
+entityID
+taxID
+Standard (Interoperability standard)
+Properties:
+standardID (e.g., IFC, ISO 20022, BLDS)
+version
+Key Relationships
+hasDocument: Links PermitApplication or BusinessTaxTransaction to Documents (e.g., PermitApplication hasDocument DWGDocument).
+conformsTo: Associates Documents with Standards (e.g., DXFDocument conformsTo IFC).
+isSubmittedBy: Connects PermitApplication or BusinessTaxTransaction to BusinessEntity.
+references: Ties Documents to Projects (e.g., DWGDocument references Project).
+Standards Simplified
+IFC: For DWG/DXF (CAD interoperability in permits).
+ISO 20022: For JSON/CSV (tax transactions).
+BLDS: For PermitApplication processes.
+OData: For API endpoints (queryable data access).
+Distilled Diagram (Mermaid Syntax)
+Here’s a simplified version of the ontology as a Mermaid class diagram, focusing on clarity and core functionality:
+
+mermaid
+
+Copy
+classDiagram
+    class Document {
+        +formatType: string
+        +fileSize: integer
+    }
+    class JSONDocument {
+        +jsonSchema: string
+    }
+    class CSVDocument {
+        +delimiter: string
+    }
+    class PDFDocument {
+        +hasDigitalSignature: boolean
+    }
+    class DWGDocument {
+        +cadVersion: string
+    }
+    class DXFDocument {
+        +geometricEntities: string
+    }
+    class PermitApplication {
+        +applicationID: string
+        +status: string
+        +submissionDate: dateTime
+    }
+    class BusinessTaxTransaction {
+        +transactionID: string
+        +taxCode: string
+        +amount: float
+    }
+    class Project {
+        +projectID: string
+        +location: string
+    }
+    class BusinessEntity {
+        +entityID: string
+        +taxID: string
+    }
+    class Standard {
+        +standardID: string
+        +version: string
+    }
+    Document <|-- JSONDocument
+    Document <|-- CSVDocument
+    Document <|-- PDFDocument
+    Document <|-- DWGDocument
+    Document <|-- DXFDocument
+    PermitApplication --> Document : hasDocument
+    BusinessTaxTransaction --> Document : hasDocument
+    Document --> Standard : conformsTo
+    Document --> Project : references
+    PermitApplication --> BusinessEntity : isSubmittedBy
+    BusinessTaxTransaction --> BusinessEntity : isSubmittedBy
+    note "Standards: IFC (DWG/DXF), ISO 20022 (JSON/CSV), BLDS (Permits), OData (APIs)"
+    note "gRPC for backend, REST/OData for public APIs"
+Key Changes in Distillation
+Reduced Complexity:
+Removed redundant properties (e.g., creationDate, semanticContent) to focus on essentials.
+Simplified subclasses by keeping only critical attributes (e.g., jsonSchema for JSONDocument, geometricEntities for DXFDocument).
+Consolidated standards into a single class (Standard) with key identifiers (IFC, ISO 20022, BLDS, OData).
+Focused Relationships:
+Kept only the most relevant relationships (hasDocument, conformsTo, isSubmittedBy, references) to reduce clutter.
+Removed less critical relationships (e.g., containsData, isPartOf) to streamline the model.
+Standards Integration:
+Highlighted IFC, ISO 20022, BLDS, and OData as the core standards, aligning with your OpenTax/OpenPermit goals and gRPC recommendation.
+Omitted less relevant standards (e.g., Dublin Core) to avoid overcomplication.
+API Alignment:
+Added notes to indicate gRPC for backend processing (e.g., DWG parsing, CSV aggregation) and REST/OData for public APIs, ensuring compatibility with your prior request for the latest, faster protocol (gRPC).
+Implementation with gRPC
+To integrate this distilled ontology into OpenTax and OpenPermit using gRPC, here’s a simplified approach:
+
+Protobuf Definition
+Define the ontology in Protobuf for gRPC, focusing on core classes and relationships:
+
+proto
+
+Copy
+syntax = "proto3";
+
+message Document {
+    string formatType = 1;
+    int32 fileSize = 2;
+    oneof subtype {
+        JSONDocument json = 3;
+        CSVDocument csv = 4;
+        PDFDocument pdf = 5;
+        DWGDocument dwg = 6;
+        DXFDocument dxf = 7;
+    }
+}
+
+message JSONDocument {
+    string jsonSchema = 1;
+}
+
+message CSVDocument {
+    string delimiter = 1;
+}
+
+message PDFDocument {
+    bool hasDigitalSignature = 1;
+}
+
+message DWGDocument {
+    string cadVersion = 1;
+}
+
+message DXFDocument {
+    string geometricEntities = 1;
+}
+
+message PermitApplication {
+    string applicationID = 1;
+    string status = 2;
+    string submissionDate = 3;
+    repeated Document documents = 4;
+    string submittedBy = 5; // BusinessEntity ID
+}
+
+message BusinessTaxTransaction {
+    string transactionID = 1;
+    string taxCode = 2;
+    float amount = 3;
+    repeated Document documents = 4;
+    string submittedBy = 5; // BusinessEntity ID
+}
+
+message Project {
+    string projectID = 1;
+    string location = 2;
+}
+
+message BusinessEntity {
+    string entityID = 1;
+    string taxID = 2;
+}
+
+message Standard {
+    string standardID = 1;
+    string version = 2;
+}
+gRPC Service
+Define a gRPC service to query and manage the ontology:
+
+proto
+
+Copy
+service OntologyService {
+    rpc GetPermitDocuments (PermitRequest) returns (DocumentList) {}
+    rpc GetTaxDocuments (TaxRequest) returns (DocumentList) {}
+}
+
+message PermitRequest {
+    string applicationID = 1;
+}
+
+message TaxRequest {
+    string transactionID = 1;
+}
+
+message DocumentList {
+    repeated Document documents = 1;
+}
+Integration Notes
+Backend (gRPC): Use gRPC to handle backend processing, e.g., parsing DWG/DXF files into IFC-compliant Protobuf messages or aggregating CSV tax records.
+Public API (REST/OData): Expose a REST layer with OData endpoints (e.g., /permits/{id}/documents) for client access, converting Protobuf to JSON.
+Tools: Use Autodesk Forge for DWG/DXF parsing, PyPDF2 for PDF extraction, and pandas for CSV handling, ensuring compliance with IFC, ISO 20022, and BLDS.
+Benefits of Distillation
+Clarity: The simplified ontology is easier to understand and implement, especially for developers working on OpenTax and OpenPermit.
+Performance: gRPC with Protobuf ensures faster data transfer for large files (e.g., DWG, CSV), aligning with your request for the latest, faster protocol.
+Interoperability: Retains core standards (IFC, ISO 20022, BLDS, OData) to ensure seamless integration across systems.
+Actionable: The distilled model is ready for immediate integration into APIs, with clear mappings for permit and tax workflows.
+Next Steps
+Implement Protobuf and gRPC:
+Generate gRPC stubs for the Protobuf definitions in Python (for OpenTaxForms) and C# (for OpenPermit’s .NET).
+Test with sample DWG blueprints and CSV tax records.
+Expose REST/OData Layer:
+Add OData endpoints to OpenPermit’s Swagger API for querying permit documents.
+Enhance OpenTaxForms’ ReSTful API to support tax document retrieval.
+Visualize for Stakeholders:
+Use the Mermaid diagram in documentation for OpenTax/OpenPermit GitHub repositories.
+Share with the community (e.g., @openpermit on Twitter) to gather feedback.
+Validate Standards Compliance:
+Test DWG/DXF files against IFC using tools like BIMServer.
+Validate JSON/CSV tax data against ISO 20022 schemas.
+If you’d like to refine the diagram further, generate specific gRPC code samples, or draft a community post to promote this distilled ontology, let me know!
