@@ -1,0 +1,55 @@
+classDiagram
+    class Document {
+        +formatType: string
+        +fileSize: integer
+    }
+    class JSONDocument {
+        +jsonSchema: string
+    }
+    class CSVDocument {
+        +delimiter: string
+    }
+    class PDFDocument {
+        +hasDigitalSignature: boolean
+    }
+    class DWGDocument {
+        +cadVersion: string
+    }
+    class DXFDocument {
+        +geometricEntities: string
+    }
+    class PermitApplication {
+        +applicationID: string
+        +status: string
+        +submissionDate: dateTime
+    }
+    class BusinessTaxTransaction {
+        +transactionID: string
+        +taxCode: string
+        +amount: float
+    }
+    class Project {
+        +projectID: string
+        +location: string
+    }
+    class BusinessEntity {
+        +entityID: string
+        +taxID: string
+    }
+    class Standard {
+        +standardID: string
+        +version: string
+    }
+    Document <|-- JSONDocument
+    Document <|-- CSVDocument
+    Document <|-- PDFDocument
+    Document <|-- DWGDocument
+    Document <|-- DXFDocument
+    PermitApplication --> Document : hasDocument
+    BusinessTaxTransaction --> Document : hasDocument
+    Document --> Standard : conformsTo
+    Document --> Project : references
+    PermitApplication --> BusinessEntity : isSubmittedBy
+    BusinessTaxTransaction --> BusinessEntity : isSubmittedBy
+    note "Standards: BLDS (Permits), IFC (DWG/DXF), ISO 20022 (JSON/CSV), OData (APIs)"
+    note "gRPC for backend processing, REST/OData for public APIs"
