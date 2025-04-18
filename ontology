@@ -4,7 +4,7 @@ The goal is to streamline the ontology for practical use in OpenTax and OpenPerm
 Core Classes
 Document (Abstract class for all file types)
 Properties:
-formatType (e.g., JSON, CSV, PDF, DWG, DXF)
+formatType (e.g., JSON, CSV, PDF, DWG, DXF, SHP, KML)
 fileSize
 Subclasses:
 JSONDocument: For structured permit/tax metadata (jsonSchema).
