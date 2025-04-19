@@ -6,7 +6,7 @@ The point of this repo is to seek & maintain the most efficient method for Munic
 
 This Open-Source repo can be hosted ubiquitously (platform agnostic). 
 
-This repo aligns with the SheetPros/OpenTax concept extending OData and UK Tax Digitization principles as models for success while seeking and incorporating the leading-edge of available tech today. 
+This repo aligns with the SheetPros/OpenTax concept extending OData and UK Tax Digitization principles as models for success while seeking and incorporating state-of-the-art interoperable frameworks.  
 
 Please comment/contribute/share/join!
 
