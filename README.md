@@ -28,5 +28,8 @@ This focus includes MCP Agent frameworks, block-chain, traditional business data
 
 Culminating open-source projects, comments & feedback, Sponsors, collaborators: Virginia Municipalities and the tech community. 
 
+![image](https://github.com/user-attachments/assets/f6bde182-d2e3-4335-a352-c7f02b09240f)
+
+
 
 
