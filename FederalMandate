@@ -17,7 +17,8 @@ Alignment with Mandate: By providing a reusable software solution, OpenPermit su
 The repository’s creation by SheetPros, a private entity, reflects the mandate’s encouragement of public-private collaboration to innovate government processes.
 
 3. Federal Source Code Policy (OMB M-16-21)
-The Federal Source Code Policy (OMB Memorandum M-16-21, issued August 8, 2016) is the guiding framework for OpenPermit’s development and deployment. This policy, detailed in the Digital.gov resource, sets requirements for federal agencies to achieve efficiency, transparency, and innovation through reusable and open source software. Key provisions include:
+The Federal Source Code Policy (OMB Memorandum M-16-21, issued August 8, 2016) is the guiding framework for OpenPermit’s development and deployment. 
+This policy, detailed in the Digital.gov resource, sets requirements for federal agencies to achieve efficiency, transparency, and innovation through reusable and open source software. Key provisions include:
 
 a. Core Objectives of OMB M-16-21
 Code Reuse Across Agencies: Agencies must make new custom-developed source code available for sharing and reuse across the federal government to avoid duplicative efforts.
@@ -33,7 +34,8 @@ Accountability Mechanisms: Agencies must maintain inventories of custom code (e.
 The policy also emphasizes an “open by default” approach for government-created software, with exceptions for sensitive or proprietary code.
 
 c. Relevance to OpenPermit
-Compliance with M-16-21: OpenPermit, as an OSS project, aligns with the policy’s requirement to release custom code publicly. If developed with federal funding or for federal use, it would contribute to the 20% OSS mandate.
+Compliance with M-16-21: OpenPermit, as an OSS project, aligns with the policy’s requirement to release custom code publicly. 
+If developed with federal funding or for federal use, it would contribute to the 20% OSS mandate.
 Code Reuse: The repository enables other agencies or jurisdictions to adopt its permitting tools, reducing the need to build similar systems from scratch.
 Transparency: By hosting the code on GitHub, OpenPermit ensures public access, allowing stakeholders to review and improve the software.
 4. Broader Implications
@@ -55,6 +57,8 @@ Explore code.gov: Visit the federal code repository to see how OpenPermit fits i
 Contribute to OpenPermit: Check the repository’s documentation, issues, or contribution guidelines on GitHub to participate in development or provide feedback.
 Monitor Mandate Progress: Follow White House updates (e.g., via whitehouse.gov) for new directives or funding tied to permitting modernization.
 Conclusion
-The OpenPermit repository is a tangible response to the Presidential Mandate on permitting modernization, leveraging the Federal Source Code Policy (OMB M-16-21) to deliver an open source solution for efficient, transparent permitting processes. By aligning with the policy’s requirements for code reuse, OSS release, and transparency, OpenPermit supports the government’s broader goals of innovation and accountability. Its success will depend on robust adoption, security measures, and continued collaboration across federal, state, and private sectors.
+The OpenPermit repository is a tangible response to the Presidential Mandate on permitting modernization, leveraging the Federal Source Code Policy (OMB M-16-21) to deliver an open source solution for efficient, transparent permitting processes. 
+By aligning with the policy’s requirements for code reuse, OSS release, and transparency, OpenPermit supports the government’s broader goals of innovation and accountability. 
+Its success will depend on robust adoption, security measures, and continued collaboration across federal, state, and private sectors.
 
 If you need specific details about the OpenPermit codebase, assistance with contributing, or further analysis of the policy’s implications, let me know!
