@@ -130,3 +130,16 @@ Culminating open-source projects, comments & feedback, Sponsors, collaborators: 
 
 
 
+
+
+## Installation
+Detailed installation instructions will be added here.
+
+## Usage
+Usage examples and documentation will be added here.
+
+## Contributing
+Please see CONTRIBUTING.md for detailed contribution guidelines.
+
+## Development Setup
+Instructions for setting up the development environment.
