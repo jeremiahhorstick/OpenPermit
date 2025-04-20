@@ -32,3 +32,9 @@ Thumbs.db
 
 # Git credentials
 .git-credentials
+
+# Secure tokens
+.secure_tokens/
+**/secure_tokens/
+*.token
+.grok_token
