@@ -1,8 +1,8 @@
 # OpenPermit
 
-Ultimately Efficient Permitting - Distilled to simplicity, interoperability, speed and security. 
+Ultimately Efficient Permitting - Distilled for simplicity, interoperability, speed and security. 
 
-The point of this repo is to seek & maintain the most efficient method for Municipal entities to host and interact with businesses/individuals.
+Seek & maintain the most efficient method for Municipal entities to host and interact with businesses/individuals.
 
 This Open-Source repo can be hosted ubiquitously (platform agnostic). 
 
@@ -27,6 +27,7 @@ Use the best of class - maximal reliability, maximal security, standards-based-i
 This focus includes MCP Agent frameworks, block-chain, traditional business data standards and engineering geodata attribution, markup standards where they are best in class. 
 
 Culminating open-source projects, comments & feedback, Sponsors, collaborators: Virginia Municipalities and the tech community. 
+
 
 ![image](https://github.com/user-attachments/assets/f6bde182-d2e3-4335-a352-c7f02b09240f)
 
