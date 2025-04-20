@@ -34,10 +34,15 @@ Culminating open-source projects, comments & feedback, Sponsors, collaborators: 
 
 
 Citations:
+White House Fact Sheet Permitting Technology Mandate
 https://www.whitehouse.gov/fact-sheets/2025/04/fact-sheet-president-trump-brings-permitting-technology-into-the-21st-century-for-government-efficiency/
+OMB M-16–21 Guidance Open Source Software
 https://digital.gov/resources/requirements-for-achieving-efficiency-transparency-and-innovation-through-reusable-and-open-source-software/
+GSA Open Technology Open Source Policy
 https://open.gsa.gov/oss/
+Wikipedia Adoption Free Open-Source Software
 https://en.wikipedia.org/wiki/Adoption_of_free_and_open-source_software_by_public_institutions
+New America Report Open Source Tools Government
 https://www.newamerica.org/digital-impact-governance-initiative/reports/building-and-reusing-open-source-tools-government/section-one-an-overview-of-open-source/
 
 
