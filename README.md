@@ -12,6 +12,10 @@ Please comment/contribute/share/join!
 
 Also check https://github.com/SheetPros/OpenTax
 
+Why this matters:
+
+https://subnational.doingbusiness.org/en/data/exploretopics/dealing-with-construction-permits/why-matters
+
 The basics:
 
 Decoupled Standard/Interoperable Data Layer (intra_agency,agency_entity,agency_individual). 
