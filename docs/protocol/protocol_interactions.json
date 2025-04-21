@@ -1,0 +1,258 @@
+{
+  "navigation": {
+    "node_access": {
+      "model_interface": {
+        "permissions": [
+          "read",
+          "write"
+        ],
+        "required_auth": [
+          "model_token"
+        ],
+        "validation": [
+          "mcp_compliance"
+        ]
+      },
+      "repository_interface": {
+        "permissions": [
+          "read",
+          "write",
+          "execute"
+        ],
+        "required_auth": [
+          "github_token"
+        ],
+        "validation": [
+          "git_operations"
+        ]
+      },
+      "standards_enforcement": {
+        "permissions": [
+          "read"
+        ],
+        "required_auth": [
+          "model_token",
+          "github_token"
+        ],
+        "validation": [
+          "standards_compliance"
+        ]
+      }
+    },
+    "workflows": {
+      "research": {
+        "sequence": [
+          "model_auth",
+          "repo_clone",
+          "analyze",
+          "document"
+        ],
+        "required_nodes": [
+          "Task Handler",
+          "Git Operations",
+          "Output Formatter"
+        ],
+        "artifacts": [
+          "research_notes.md",
+          "relevant_issues.json"
+        ]
+      },
+      "refine": {
+        "sequence": [
+          "model_auth",
+          "repo_clone",
+          "analyze",
+          "propose",
+          "validate"
+        ],
+        "required_nodes": [
+          "Task Handler",
+          "Git Operations",
+          "MCP Validator"
+        ],
+        "artifacts": [
+          "refinements.json",
+          "proposed_changes.md"
+        ]
+      },
+      "engage": {
+        "sequence": [
+          "model_auth",
+          "repo_access",
+          "discuss",
+          "document"
+        ],
+        "required_nodes": [
+          "Task Handler",
+          "Git Operations",
+          "Output Formatter"
+        ],
+        "artifacts": [
+          "discussions.json",
+          "pull_requests.md"
+        ]
+      },
+      "distill": {
+        "sequence": [
+          "model_auth",
+          "repo_clone",
+          "analyze",
+          "standardize",
+          "document"
+        ],
+        "required_nodes": [
+          "Task Handler",
+          "MCP Validator",
+          "Output Formatter"
+        ],
+        "artifacts": [
+          "standards.md",
+          "implementations.json"
+        ]
+      }
+    }
+  },
+  "validation": {
+    "mcp_compliance": {
+      "input_validation": {
+        "required_fields": [
+          "model_name",
+          "task_type",
+          "repo_url"
+        ],
+        "format_checks": [
+          "url_format",
+          "model_support",
+          "task_support"
+        ]
+      },
+      "output_validation": {
+        "required_fields": [
+          "status",
+          "artifacts",
+          "metadata"
+        ],
+        "format_checks": [
+          "json_schema",
+          "markdown_format"
+        ]
+      },
+      "communication_validation": {
+        "protocols": [
+          "http",
+          "git"
+        ],
+        "authentication": [
+          "token_based",
+          "oauth"
+        ],
+        "encryption": [
+          "tls_1.3"
+        ]
+      }
+    },
+    "standards_compliance": {
+      "code_standards": {
+        "style_guides": [
+          "pep8",
+          "google_style"
+        ],
+        "documentation": [
+          "docstring",
+          "readme",
+          "api_docs"
+        ],
+        "testing": [
+          "unit_tests",
+          "integration_tests"
+        ]
+      },
+      "security_standards": {
+        "authentication": [
+          "oauth2",
+          "token_rotation"
+        ],
+        "authorization": [
+          "rbac",
+          "scope_based"
+        ],
+        "data_protection": [
+          "encryption",
+          "secure_storage"
+        ]
+      }
+    }
+  },
+  "artifacts": {
+    "templates": {
+      "markdown": {
+        "research_notes": {
+          "sections": [
+            "overview",
+            "findings",
+            "recommendations"
+          ],
+          "metadata": [
+            "timestamp",
+            "model",
+            "version"
+          ]
+        },
+        "standards": {
+          "sections": [
+            "guidelines",
+            "implementations",
+            "examples"
+          ],
+          "metadata": [
+            "version",
+            "compliance",
+            "status"
+          ]
+        }
+      },
+      "json": {
+        "issues": {
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "id",
+            "title",
+            "body",
+            "status"
+          ]
+        },
+        "refinements": {
+          "schema": {
+            "type": "object"
+          },
+          "required": [
+            "changes",
+            "justification",
+            "impact"
+          ]
+        }
+      }
+    },
+    "storage": {
+      "local": {
+        "path": "model_workspace/{model_name}",
+        "structure": [
+          "artifacts",
+          "metadata",
+          "temp"
+        ],
+        "permissions": "700"
+      },
+      "remote": {
+        "type": "git",
+        "branch": "model/{model_name}/{task_type}",
+        "pr_template": "templates/pull_request.md"
+      }
+    }
+  }
+}

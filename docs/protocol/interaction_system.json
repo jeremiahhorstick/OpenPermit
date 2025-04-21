@@ -1,0 +1,82 @@
+{
+  "navigation": {
+    "keyboard_shortcuts": {
+      "focus_prompt": "Ctrl + Space",
+      "search_nodes": "Ctrl + F",
+      "open_chat": "Ctrl + Enter",
+      "close_modal": "Esc",
+      "zoom_in": "+",
+      "zoom_out": "-",
+      "pan": "Arrow keys"
+    },
+    "mouse_controls": {
+      "drag_node": "Left click + drag",
+      "open_chat": "Double click",
+      "expand_node": "Right click",
+      "zoom": "Scroll wheel"
+    }
+  },
+  "chat_system": {
+    "agent_tagging": {
+      "syntax": "@agent_name",
+      "available_agents": [
+        "grok",
+        "openai",
+        "claude"
+      ],
+      "commands": {
+        "analyze": "/analyze",
+        "review": "/review",
+        "deploy": "/deploy",
+        "approve": "/approve"
+      }
+    },
+    "modal_features": {
+      "minimize": true,
+      "resize": true,
+      "drag": true,
+      "tabs": true,
+      "notifications": true
+    }
+  },
+  "ci_cd": {
+    "approval_process": {
+      "required_reviews": 2,
+      "automated_checks": [
+        "tests",
+        "linting",
+        "security"
+      ],
+      "deployment_stages": [
+        "dev",
+        "staging",
+        "prod"
+      ],
+      "notification_channels": [
+        "chat",
+        "email",
+        "dashboard"
+      ]
+    }
+  },
+  "ontology": {
+    "base_format": "JSON",
+    "schema_types": [
+      "repository",
+      "agent",
+      "tool",
+      "process"
+    ],
+    "relationships": [
+      "contains",
+      "uses",
+      "implements",
+      "requires"
+    ],
+    "metadata": {
+      "version": "1.0",
+      "last_updated": "2025-04-21",
+      "standard": "MCP-compatible"
+    }
+  }
+}
