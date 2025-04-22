@@ -142,5 +142,13 @@ protegeproject/protege. (n.d.). GitHub. https://github.com/protegeproject/proteg
 
 deve-sh/Permit-System. (n.d.). GitHub. https://github.com/deve-sh/Permit-System
 
+https://www.buildingsmart.org/about/openbim/
+https://www.knowledgespeak.com/ontospeak/digital-building-permit-ontology-released/
+https://accordproject.eu/building-compliance-ontology-released/
+https://www.sciencedirect.com/science/article/pii/S2452414X23000924
+https://www.sciencedirect.com/science/article/abs/pii/S1474034623004421
+https://www.csis.org/programs/strategic-technologies-program/resources/government-open-source-software-policies
+https://github.com/publicdigital/open-source-in-government
+
 
 
