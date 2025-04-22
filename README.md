@@ -4,9 +4,7 @@ Ultimately Efficient Permitting - Distilled for simplicity, interoperability, sp
 
 Seek & maintain the most efficient method for Municipal entities to host and interact with businesses/individuals.
 
-This Open-Source repo can be hosted ubiquitously (platform agnostic). 
-
-This repo aligns with the SheetPros/OpenTax concept extending OData and UK Tax Digitization principles as models for success while seeking and incorporating state-of-the-art interoperable frameworks. 
+This Open-Source repo is to provide a platform agnostic data model for permits and permit workflows seeking and incorporating state-of-the-art interoperable frameworks. 
 
 Please comment/contribute/share/join!
 
