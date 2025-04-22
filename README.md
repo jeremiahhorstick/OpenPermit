@@ -6,7 +6,7 @@ Seek & maintain the most efficient method for Municipal entities to host and int
 
 This Open-Source repo can be hosted ubiquitously (platform agnostic). 
 
-This repo aligns with the SheetPros/OpenTax concept extending OData and UK Tax Digitization principles as models for success while seeking and incorporating state-of-the-art interoperable frameworks.  
+This repo aligns with the SheetPros/OpenTax concept extending OData and UK Tax Digitization principles as models for success while seeking and incorporating state-of-the-art interoperable frameworks. 
 
 Please comment/contribute/share/join!
 
@@ -18,17 +18,11 @@ https://subnational.doingbusiness.org/en/data/exploretopics/dealing-with-constru
 
 The basics:
 
-Decoupled Standard/Interoperable Data Layer (intra_agency,agency_entity,agency_individual). 
+Interoperable Data Layer (intra_agency,agency_entity,agency_individual). 
 
-Users and user groups have access to the appropriate, secure data. 
+Maintain state-of-the-art - maximal reliability, maximal security, standards-based-interoperability. 
 
-User groups will have unlimited choice for the application and abstraction layer allowing entites to enhance their interaction with permitting systems. 
-
-This broadens the competitive landscape and focus on optimizing specific permitting cases. 
-
-Use the best of class - maximal reliability, maximal security, standards-based-interoperability. 
-
-This focus includes MCP Agent frameworks, block-chain, traditional business data standards and engineering geodata attribution, markup standards where they are best in class. 
+This focus includes MCP Agent frameworks, block-chain, traditional standards,functional organization in a node class  
 
 Culminating open-source projects, comments & feedback, Sponsors, collaborators: Virginia Municipalities and the tech community. 
 
@@ -127,6 +121,28 @@ Culminating open-source projects, comments & feedback, Sponsors, collaborators: 
     National BIM permitting initiative demonstrating automation and efficiency.
 
 ---
+
+## Add to citation:
+https://www.sciencedirect.com/science/article/pii/S2352710225005200?
+open-data-standards/permitdata.org. (n.d.). GitHub. https://github.com/open-data-standards/permitdata.org
+
+USDAForestService/fs-open-forest-platform. (n.d.). GitHub. https://github.com/USDAForestService/fs-open-forest-platform
+
+SJSU272LabF17/Permit-ML. (n.d.). GitHub. https://github.com/SJSU272LabF17/Permit-ML
+
+github/github-mcp-server. (n.d.). GitHub. https://github.com/github/github-mcp-server
+
+Accord-Project/aec3po. (n.d.). GitHub. https://github.com/Accord-Project/aec3po
+
+smartsheet-platform/smartsheet-python-sdk. (n.d.). GitHub. https://github.com/smartsheet-platform/smartsheet-python-sdk
+
+eGovernments/DIGIT-OSS. (n.d.). GitHub. https://github.com/eGovernments/DIGIT-OSS
+
+opensourceBIM/BIMserver. (n.d.). GitHub. https://github.com/opensourceBIM/BIMserver
+
+protegeproject/protege. (n.d.). GitHub. https://github.com/protegeproject/protege
+
+deve-sh/Permit-System. (n.d.). GitHub. https://github.com/deve-sh/Permit-System
 
 
 
