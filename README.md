@@ -134,8 +134,6 @@ github/github-mcp-server. (n.d.). GitHub. https://github.com/github/github-mcp-s
 
 Accord-Project/aec3po. (n.d.). GitHub. https://github.com/Accord-Project/aec3po
 
-smartsheet-platform/smartsheet-python-sdk. (n.d.). GitHub. https://github.com/smartsheet-platform/smartsheet-python-sdk
-
 eGovernments/DIGIT-OSS. (n.d.). GitHub. https://github.com/eGovernments/DIGIT-OSS
 
 opensourceBIM/BIMserver. (n.d.). GitHub. https://github.com/opensourceBIM/BIMserver
