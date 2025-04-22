@@ -218,7 +218,44 @@ Culminating open-source projects, comments & feedback, Sponsors, collaborators: 
   Defines permitting processes for construction-related safety regulations.  
 
 
+Research:
+FAST‑41 Permit Standards & Guidance
 
+Statutory Authority: Title 41 of the FAST Act (42 U.S.C. § 4370m et seq.) establishes the Federal Permitting Improvement Steering Council (FPISC), requires project‑specific Coordinated Project Plans with enforceable schedules, and mandates public tracking via the Permitting Dashboard 
+Performance.gov
+.
+
+Official Guidance (M‑17‑14): FPISC’s January 13, 2017 guidance (M‑17‑14) outlines procedural requirements—e.g. facilitating agency roles, performance schedules, transparency rules, and extension protocols—for covered projects 
+Performance.gov
+.
+
+Permitting Dashboard Data Standards: The Federal Infrastructure Permitting Dashboard provides a machine‑readable data portal (CSV/JSON) with standardized fields like “project_status,” “milestones,” and “agency_actions” to ensure consistent reporting across agencies 
+Performance.gov
+.
+
+One Federal Decision (EO 13807): Executive Order 13807 aligns with FAST‑41 by requiring a single, coordinated environmental review and authorization record for major federal projects, with deadlines harmonized under the FAST‑41 CPP process 
+Performance.gov
+.
+
+Other Permit Strategies & Standards
+
+NEPA / CEQ Regulations (40 C.F.R. §§ 1500–1508): The Council on Environmental Quality’s implementing regulations set “action‑forcing” procedural requirements (scoping, EAs/EISs, public involvement) for all federal environmental reviews 
+FHWA Environmental Programs
+.
+
+General Permits under the Clean Water Act (CWA § 402 / 40 C.F.R. Part 122): EPA’s NPDES general permit framework allows a single permit to cover multiple dischargers with similar operations—streamlining approval via predefined conditions rather than individual reviews 
+US EPA
+.
+
+State‑Level Integrated Reviews: Many states operate “one‑stop shop” e‑permitting portals (e.g. California’s CEQA/permit integration, New York’s SEQR) to consolidate environmental and land‑use approvals in a single application.
+
+Permit‑by‑Rule & General Authorization Models: Regulatory schemes (e.g. stormwater, small wind turbines, agricultural water use) use “permit‐by‐rule” approaches where compliance with standard practices automatically authorizes the activity.
+
+Digital Engagement & Public Comment APIs: Modern platforms embed public‑comment modules and webhook‑based notifications to integrate stakeholder feedback directly into permit records.
+
+BIM/GIS‑Enabled Permit Submissions: ISO 19650 (BIM data exchange) and OGC CityGML/InfraGML standards are increasingly adopted to submit 3D models and geospatial data as part of permit applications.
+
+Risk‑ and Performance‑Based Permitting: Frameworks like RCRA tiered permits or EPA’s sector‑based air permits focus resources on higher‑risk sources while granting blanket coverage to low‑risk activities.
 
 
 
