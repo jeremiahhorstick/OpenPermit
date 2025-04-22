@@ -147,6 +147,8 @@ https://www.sciencedirect.com/science/article/pii/S2452414X23000924
 https://www.sciencedirect.com/science/article/abs/pii/S1474034623004421
 https://www.csis.org/programs/strategic-technologies-program/resources/government-open-source-software-policies
 https://github.com/publicdigital/open-source-in-government
+Deep Dive on ISO, IEC, IEEE, W3C, OASIS, and NIST
+
 
 
 
