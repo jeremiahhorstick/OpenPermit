@@ -66,6 +66,9 @@ Culminating open-source projects, comments & feedback, Sponsors, collaborators: 
 
 ### Standards and Specifications
 
+- **OData Organization (n.d.).** [OData (Open Data Protocol)](https://www.odata.org/) & [GitHub – OData](https://github.com/OData)  
+  Official site and GitHub repository for the OData RESTful API protocol specification, libraries, and tools.
+
 - **Open Design Alliance (2023).** [ODA Platform Technologies Overview](https://www.opendesign.com/products/oda-platform)  
   SDKs for DWG, DXF, PDF, SVG, IFC, Revit, and more, supporting interoperability across AEC file formats.
 
