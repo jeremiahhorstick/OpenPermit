@@ -178,12 +178,15 @@ OpenPermit defines a standards-based data layer for permitting and tax transacti
 
 ## Installation
 Detailed installation instructions will be added here.
+     One Click
 
 ## Usage
 Usage examples and documentation will be added here.
+
+Deploy Multi-Agents on Node exploration (research, refinment, updates)
 
 ## Contributing
 Please see CONTRIBUTING.md for detailed contribution guidelines.
 
 ## Development Setup
-Instructions for setting up the development environment.
+Hosted Notebooks
