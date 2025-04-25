@@ -2,7 +2,7 @@
 
 Permitting - Distilled for Efficiency, simplicity, interoperability, speed and security. 
 
-Proposing an efficient method for Municipal entities to host and interact with businesses/individuals.
+Proposing an efficient method for municipal entities to host and interact with businesses/individuals.
 
 Please comment/contribute/share/join!
 
@@ -16,9 +16,9 @@ Interoperable Data Layer.
 
 Maintain state-of-the-art - maximal reliability, maximal security, standards-based-interoperability. 
 
-Include MCP, block-chain, traditional standards, functional organization. 
+Include MCP, blockchain, traditional standards, functional organization. 
 
-Culminate projects, comments, feedback, Sponsors, collaborators: Virginia Municipalities and the tech community. 
+Culminate projects, comments, feedback, Sponsors, collaborators: Virginia Municipalities. 
 
 
 ## References
