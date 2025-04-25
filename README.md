@@ -128,7 +128,51 @@ Culminating open-source projects, comments & feedback, Sponsors, collaborators: 
 
 ---
 
+## Standards
 
+# OpenPermit Data Standards
+
+## Overview
+OpenPermit defines a standards-based data layer for permitting and tax transactions, ensuring interoperability across municipalities and agencies.
+
+## Standards
+1. **BLDS**: For `Application` and `Permit` data.
+   - Schema: JSON-LD with `id`, `status`, `submittedDate`.
+   - Validation: JSON Schema.
+2. **IFC**: For `Document` (DWG/DXF).
+   - Schema: JSON-LD with `ifcVersion`, `entities`.
+   - Validation: IFC EXPRESS.
+3. **ISO 20022**: For `Transaction`.
+   - Schema: JSON-LD with `amount`, `currency`.
+   - Validation: ISO 20022 JSON schema.
+4. **GeoJSON**: For `Location`.
+   - Schema: GeoJSON Feature with `geometry`, `properties`.
+   - Validation: GeoJSON schema.
+5. **JSON-LD**: For semantic metadata.
+   - Schema: `@context` linking to BLDS, IFC, ISO 20022.
+6. **OData**: For queryable metadata.
+   - Schema: EDM with entities (`Application`, `Document`).
+   - Validation: OData CSDL.
+7. **RDF/OWL**: For semantic relationships.
+   - Schema: OWL ontology in `ontology/open_data_ontology.owl`.
+   - Validation: SHACL.
+
+## Example
+```json
+{
+  "@context": ["http://schema.org", "http://standards.buildingsmart.org/IFC"],
+  "@type": "PermitApplication",
+  "id": "APP123",
+  "status": "submitted",
+  "submittedDate": "2025-04-20",
+  "documents": [
+    {
+      "@type": "DWGDocument",
+      "id": "DOC789",
+      "ifcVersion": "IFC4"
+    }
+  ]
+}
 
 
 
