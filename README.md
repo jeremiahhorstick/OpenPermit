@@ -1,14 +1,10 @@
 # OpenPermit
 
-Ultimately Efficient Permitting - Distilled for simplicity, interoperability, speed and security. 
+Permitting - Distilled for simplicity, interoperability, speed and security. 
 
-Seek & maintain the most efficient method for Municipal entities to host and interact with businesses/individuals.
-
-This Open-Source repo is to provide a platform agnostic data model for permits and permit workflows seeking and incorporating state-of-the-art interoperable frameworks. 
+Proposing an efficient method for Municipal entities to host and interact with businesses/individuals.
 
 Please comment/contribute/share/join!
-
-Also check https://github.com/SheetPros/OpenTax
 
 Why this matters:
 
@@ -16,13 +12,13 @@ https://subnational.doingbusiness.org/en/data/exploretopics/dealing-with-constru
 
 The basics:
 
-Interoperable Data Layer (intra_agency,agency_entity,agency_individual). 
+Interoperable Data Layer.
 
 Maintain state-of-the-art - maximal reliability, maximal security, standards-based-interoperability. 
 
-This focus includes MCP Agent frameworks, block-chain, traditional standards,functional organization in a node class  
+Include MCP, block-chain, traditional standards, functional organization. 
 
-Culminating open-source projects, comments & feedback, Sponsors, collaborators: Virginia Municipalities and the tech community. 
+Culminate projects, comments, feedback, Sponsors, collaborators: Virginia Municipalities and the tech community. 
 
 
 ## References
