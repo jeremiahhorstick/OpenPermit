@@ -1,6 +1,6 @@
 # OpenPermit
 
-Permitting - Distilled for Efficiency, simplicity, interoperability, speed and security. 
+Permitting - Distilled for Efficiency, Simplicity, interoperability, speed and security. 
 
 Proposing an efficient method for municipal entities to host and interact with businesses/individuals.
 
