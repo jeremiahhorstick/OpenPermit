@@ -253,5 +253,5 @@ BIM/GIS‑Enabled Permit Submissions: ISO 19650 (BIM data exchange) and OGC Cit
 
 Risk‑ and Performance‑Based Permitting: Frameworks like RCRA tiered permits or EPA’s sector‑based air permits focus resources on higher‑risk sources while granting blanket coverage to low‑risk activities.
 
-
+![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/jeremiahhorstick/OpenPermit?utm_source=oss&utm_medium=github&utm_campaign=jeremiahhorstick%2FOpenPermit&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
 
