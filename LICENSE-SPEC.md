@@ -42,7 +42,7 @@ Patterns use `*` for one path segment and `**` for any depth. The first matching
 | `rules/irc2021/ch03/va-vrc-2021-ch03.units.json`, `rules/irc2021/ch03/CHAPTER-3-TABLE.md`, `rules/irc2021/ch03/interpretability-ch03.json` | CC0-1.0 | machine-readable rule data generated from the CC0 paraphrases |
 | `verification/examples/takeoff/**` | CC0-1.0 | ORI-authored synthetic sample plan, dedicated CC0 in each file |
 | `verification/examples/ifc/**`, `verification/examples/pdf/**`, `verification/examples/declared/**`, `verification/examples/reports/**` | CC BY-SA 4.0 | public benchmark cases: synthetic inputs and expected outcomes |
-| `research/data/*.json` | CC0-1.0 | machine-readable research records (licence and citation facts, counts) |
+| `research/data/*.json`, `research/data/*.csv`, `research/maps/*.html` | CC0-1.0 | machine-readable research records (licence and citation facts, counts, code-adoption facts) and self-contained research maps |
 | `.github/PULL_REQUEST_TEMPLATE.md`, `.gitignore`, `.nojekyll`, `.gitleaks.toml`, `**/requirements*.txt` | CC0-1.0 | templates and configuration |
 | everything else (`NOTICE.md`, `CREDITS.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, `docs/**`, `spec/interpretability-0.1-draft.md`, `spec/rule-unit-0.1-draft.md`, `rules/README.md`, `verification/*.md`, `adapters/blds/*.md`, `research/licenses/*.md`) | CC BY-SA 4.0 | prose specifications, documentation and attribution material |
 
