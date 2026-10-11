@@ -20,17 +20,17 @@ How to read the categories:
 - **Category D** means a statewide adoption was confirmed but a free state book was not checked: Florida, Michigan, Montana, New Hampshire, North Carolina and Tennessee. Wyoming and Puerto Rico are D because their residential scope itself was not confirmed.
 
 Notable findings (each is from a fetched official page; see `source_urls`):
-- **Recent or upcoming changes:**
-  - Montana: 2024 IRC effective Sept 26, 2026.
-  - Oklahoma: 2024 IRC permanent rule effective Sept 14, 2026.
-  - Oregon: 2026 ORSC effective Oct 1, 2026, with a six-month phase-in.
+- **Recent changes** (dates as recorded on 2026-10-03; the Montana, Oklahoma and Oregon dates have since passed):
+  - Montana: 2024 IRC took effect Sept 26, 2026.
+  - Oklahoma: 2024 IRC permanent rule took effect Sept 14, 2026.
+  - Oregon: 2026 ORSC took effect Oct 1, 2026, with a six-month phase-in.
   - New Hampshire: 2024 IRC effective July 1, 2026, with concurrency through Dec 31, 2026.
   - Georgia: 2024 IRC amendments effective Jan 1, 2026.
   - Pennsylvania: 2021 IRC regulations effective Jan 1, 2026.
   - California: 2025 CRC effective Jan 1, 2026.
   - New York: 2025 RCNYS effective Dec 31, 2025.
   - Iowa: 2024 IRC effective Sept 10, 2025.
-  - Washington (2024 codes) and South Carolina and Louisiana (next editions) take effect May 3, 2027, Jan 1, 2027 and Jan 1, 2027 respectively.
+  - Upcoming: Washington (2024 codes) and South Carolina and Louisiana (next editions) are recorded as taking effect May 3, 2027, Jan 1, 2027 and Jan 1, 2027 respectively.
 - **Michigan:** a July 7, 2025 court order kept the 2015-based residential rules in effect.
 - **North Carolina:** the 2018 NC codes remain current while the 2024 code is delayed.
 - **Kentucky:** the current code is the 2018 Kentucky Residential Code, still based on the 2015 IRC.
@@ -39,91 +39,48 @@ Notable findings (each is from a fetched official page; see `source_urls`):
   - Kentucky: 2018 KRC.
   - Wisconsin: Uniform Dwelling Code, a state-written code.
   - Hawaii, Connecticut, Massachusetts, West Virginia, Louisiana, New Mexico and Virginia: amendment documents.
-- **States telling readers to use ICC's free viewer:** New York (DOS), Indiana (DHS) and Minnesota (DLI). California says the code is viewable at no cost through several channels, including depository libraries.
-- **Copyright notices are mixed.**
-  - Maryland's COMAR site says it is published under a "license with copyright held by the State of Maryland".
-  - Rhode Island and Oklahoma state that the IRC text is ICC copyright.
-  - The NJ code PDF carries a © notice from the NJ Office of Administrative Law.
-  - No state source states that its code is public domain.
+- **States telling readers to use ICC's free viewer:** New York (DOS), Indiana (DHS) and Minnesota (DLI). California says the code can be read free through several channels, including depository libraries.
+- **Copyright notices seen are mixed** (re-checked 2026-10-10; see `copyright_notice_seen`). ORI records what notice was seen and where; it makes no determination of copyright status.
+  - Maryland's COMAR site states that the State of Maryland holds copyright in its version of the code text under CC BY-NC-SA 4.0, with a CC0 dedication 180 days after publication.
+  - Georgia, Hawaii, Oklahoma, Pennsylvania and Rhode Island publications carry ICC copyright notices or references, for the incorporated model code or for referenced ICC material.
+  - The NJ code PDF carries a copyright line from the NJ Office of Administrative Law.
+  - Most other state pages show only a general copyright line in the site footer.
 
 ## Method
 
 1. **Collection.** Official state agency, legislature and administrative-code pages were fetched with plain HTTP GET. Pages that returned 403 or rendered only through JavaScript (NY, NH, MI, FL, TN, MT, VT) were read with a web-fetch tool. Utah's server sends an incomplete TLS chain, so its statute PDF was fetched with certificate checks off. Fetched pages, hashes and the matched evidence are kept by the maintainer outside this repository; only the source URLs are published here.
 2. **Evidence check.** Every fact carries a (URL, exact quote) pair. A build step looks for the quote in the fetched text and marks any field without a match `[UNVERIFIED]`. Fields with no evidence pair are also marked UNVERIFIED. The `evidence_checked` column counts the pairs that matched.
-3. **ICC Digital Codes.** State page URLs (`https://codes.iccsafe.org/codes/united-states/<state>`) come from ICC's public US index page. **The state pages were not scraped**, as instructed. "Free read-only" is filled in only where the state's own page says the code can be viewed free. Everything else is "UNVERIFIED (ICC pages not scraped; link only)". ICC lists no territory pages, so PR has none.
-4. **Licence classification.** This is based only on the notice quoted from the source: "state copyright (notice on state source)", "ICC copyright (model code text)" or "unclear (no copyright notice seen)". State works are **not** assumed to be public domain.
+3. **ICC Digital Codes.** State page URLs (`https://codes.iccsafe.org/codes/united-states/<state>`) come from ICC's public US index page. **The state pages were not scraped**, under ORI's link-only policy for ICC pages. "Free read-only" is filled in only where the state's own page says the code can be viewed free. Everything else is "UNVERIFIED (ICC pages not scraped; link only)". ICC lists no territory pages, so PR has none.
+4. **Copyright notice seen.** The `copyright_notice_seen` field records only what copyright notice was seen on the state sources listed for each row, and where. It was re-checked on 2026-10-10 by fetching each row's agency, code-book, citation and source URLs. Values:
+   - `ICC notice on state publication`: the state's code or rule document carries an ICC copyright notice or reference (5 rows).
+   - `notice on code publication`: the code publication itself carries a state copyright notice (2 rows).
+   - `notice on web page footer`: only a general copyright line in the site footer was seen (22 rows).
+   - `no notice seen`: every listed source was read and none showed a notice (15 rows).
+   - `UNVERIFIED`: a listed source could not be read on 2026-10-10 (HTTP 403 or JavaScript-only rendering) or no official page is known (8 rows: AR, MA, MN, NH, NY, OH, PR, SD).
+   `copyright_notice` is ORI's short description of the notice, not a quotation. **ORI makes no determination of copyright status.** State works are not assumed to be public domain, and a footer line is not treated as a statement about the code text.
 5. **No code books in this repository.** State code documents are linked by URL only. No state or model code text, PDF or extract is committed.
 
 Files: [`research/data/us-state-codebooks-DRAFT.csv`](../research/data/us-state-codebooks-DRAFT.csv) and [`.json`](../research/data/us-state-codebooks-DRAFT.json) (one row per state, 24 columns), and [`research/maps/us-state-codebooks-DRAFT.html`](../research/maps/us-state-codebooks-DRAFT.html), a self-contained offline map (click a state; no external requests).
 
-Licence: the data files and the map are dedicated CC0 1.0 (see `LICENSE-SPEC.md`); this document is CC BY-SA 4.0. The facts describe third-party adoptions and grant no right to any code text.
+Licences (see `LICENSE-SPEC.md`): the CSV and JSON data files are dedicated CC0 1.0; the map page is Apache-2.0, and the state records embedded in it are copied from the CSV and stay CC0 1.0; this document is CC BY-SA 4.0. The facts describe third-party adoptions and grant no right to any code text.
 
-## Table
+Map outlines: derived from the U.S. Census Bureau Cartographic Boundary File `cb_2024_us_state_500k.zip` (2024 vintage, 1:500,000; SHA-256 `3e81cbb6cf5f60d9b01ef3e730afa14d61ce5f784252a0b33a696135e71447bc`). That hash belongs to the copy the map was built from; it matched a fresh download from www2.census.gov on 2026-10-10, and the map's SVG paths match the output of the build script, which the maintainer keeps outside this repository. Each state was projected with an Albers equal-area conic projection: contiguous states with central meridian 96°W, origin latitude 37.5°N and standard parallels 29.5°N and 45.5°N; Alaska (clipped to 180°W-129°W, scaled 0.35), Hawaii and Puerto Rico as separately projected insets. Outlines were then simplified with topology-preserving Douglas-Peucker simplification (tolerance 0.0012 projected units) and written as SVG paths rounded to 0.1 px in a 960 px-wide view. The Census file's metadata asks for credit to the U.S. Census Bureau as the source and intends the file for small-scale display, not geographic analysis.
 
-| ST | Cat | Scope | Residential code | Effective | State book (free?) | Admin citation | Licence |
-|---|---|---|---|---|---|---|---|
-| AL | A | statewide | 2015 IRC as modified by the Alabama Energy and Residential Codes Board | UNVERIFIED | yes [link](https://admincode.legislature.state.al.us/api/rule/305-2-4-.09) | Ala. Admin. Code r. 305-2-4-.09 [UNVERIFIED] | unclear (no copyright notice seen on the source) |
-| AK | C | local option | No state residential code (detached 1-3 family dwellings exempt) | n/a | yes [link](https://dps.alaska.gov/wp-content/uploads/2026/05/13-AAC-50-to-13-AAC-55-Fire-Prevention_effective-10-28-2022.pdf) | 13 AAC 50.020 [UNVERIFIED] | unclear (no copyright notice seen on the source) |
-| AZ | C | local option | None statewide | n/a | n/a | A.R.S. § 11-861 (county building codes) [UNVERIFIED] | unclear (no copyright notice seen on the source) |
-| AR | B | statewide | Arkansas Fire Prevention Code 2021, Volume III Residential | January 1, 2023 | ICC viewer (linked by DPS; free status not checked) [UNVERIFIED] | UNVERIFIED | state copyright (notice on state source) |
-| CA | B | statewide | 2025 California Residential Code, Cal. Code Regs. Title 24, Part 2.5 | January 1, 2026 | no state download; viewable at no cost per CBSC [UNVERIFIED] | Cal. Code Regs., Title 24, Part 2.5 [UNVERIFIED] | state copyright (notice on state source) |
-| CO | C | home rule | None statewide | n/a | n/a | UNVERIFIED | unclear (no copyright notice seen on the source) |
-| CT | A | statewide | 2022 Connecticut State Building Code, incorporating the 2021 IRC with CT amendments [UNVERIFIED] | October 1, 2022 | yes [link](https://portal.ct.gov/das/-/media/das-beta/pdf/office-of-state-building-inspector/2022-csbc-final.pdf) | Conn. Gen. Stat. § 29-252 (adoption authority) | unclear (no copyright notice seen on the source) |
-| DE | C | local option | None statewide (county codes) | n/a | n/a | 9 Del. C. ch. 25 (New Castle County Building Code) [UNVERIFIED] | unclear (no copyright notice seen on the source) |
-| DC | A | statewide | 2017 DC Residential Code: 2015 IRC as amended by 12-B DCMR | UNVERIFIED (DOB notes amendments after May 29, 2020 not shown in integrated codes) | yes [link](https://dob.dc.gov/page/dc-construction-codes) | 12-B DCMR (DC Residential Code Supplement) [UNVERIFIED] | unclear (no copyright notice seen on the source) |
-| FL | D | statewide | Florida Building Code, 8th Edition (2023) - Residential | December 31, 2023 | UNVERIFIED | Fla. Admin. Code R. 61G20-1.001 | unclear (no copyright notice seen on the source) |
-| GA | A | statewide | 2024 IRC with Georgia amendments | January 1, 2026 | yes [link](https://dca.georgia.gov/document/document/irc-2026-amendment-packet-2024-edition/download) | UNVERIFIED | unclear (no copyright notice seen on the source) |
-| HI | A | statewide | 2018 IRC as Hawaii State Residential Code | November 17, 2020 | yes [link](https://ags.hawaii.gov/wp-content/uploads/2021/09/2018StateResidentialCode_20201117rev1.pdf) | HRS §§ 107-24, 107-27, 107-28 (adoption) | unclear (no copyright notice seen on the source) |
-| ID | A | statewide | 2018 IRC (Parts I, II, III, IX) with Idaho amendments | UNVERIFIED (rule sections dated 7-1-24) | yes [link](https://files.dfm.idaho.gov/dfm-admin-website/rules/current/24/243930.pdf) | IDAPA 24.39.30 [UNVERIFIED] | unclear (no copyright notice seen on the source) |
-| IL | C | local option | None statewide (local choice; state baseline from 1/1/2025) | n/a | n/a | 20 ILCS 3105/10.18 (UNVERIFIED: statute page not fetched) | unclear (no copyright notice seen on the source) |
-| IN | A | statewide | 2020 Indiana Residential Code (675 IAC 14-4.4), based on the 2018 IRC [UNVERIFIED] | December 26, 2019 | yes (state amendments free per DHS) [link](https://www.in.gov/dhs/files/Adoption-and-Implementation-of-2020-Indiana-Residential-Code.pdf) | 675 IAC 14-4.4 | unclear (no copyright notice seen on the source) |
-| IA | C | local option | 2024 IRC (661 IAC 301) | September 10, 2025 (ARC 9474C) | yes [link](https://www.legis.iowa.gov/docs/iac/chapter/10-15-2025.661.301.pdf) | 661 IAC ch. 301; Iowa Code § 103A.12 [UNVERIFIED] | unclear (no copyright notice seen on the source) |
-| KS | C | home rule | None statewide | n/a | n/a | K.S.A. 12-3301 et seq. | unclear (no copyright notice seen on the source) |
-| KY | A | statewide | 2018 Kentucky Residential Code, Second Edition (based on 2015 IRC) | August 1, 2019 (mandatory) | yes [link](https://dhbc.ky.gov/Documents/2018KentuckyResidentialCode%20-%20FINAL_Clean.pdf) | 815 KAR 7:125 | unclear (no copyright notice seen on the source) |
-| LA | A | statewide | 2021 IRC with Louisiana amendments | January 1, 2023 | yes [link](https://lsuccc.la/wp-content/uploads/2025/10/uniform_construction_codes_and_amendments_r1_effective_01-01-23.pdf) | LAC 17:I (formerly LAC 55:VI.Chapter 3) | state copyright (notice on state source) |
-| ME | A | statewide | 2021 IRC (16-642 CMR ch. 5) | UNVERIFIED (90 days after approval per chapter text) | yes [link](https://www.maine.gov/dps/fmo/sites/maine.gov.dps.fmo/files/inline-files/642C005.pdf) | 16-642 CMR ch. 5 [UNVERIFIED] | unclear (no copyright notice seen on the source) |
-| MD | A | statewide | IRC (Maryland Building Performance Standards; edition 2021 UNVERIFIED on fetched text) [UNVERIFIED: evidence not matched] | UNVERIFIED | yes [link](https://regs.maryland.gov/us/md/exec/comar/09.12.51) | COMAR 09.12.51 | state copyright (notice on state source) |
-| MA | A | statewide | 780 CMR 10th Edition, Residential (780 CMR 51.00, amendments to the 2021 IRC) [UNVERIFIED] | October 11, 2024 | yes [link](https://www.mass.gov/doc/10th-edition-residential-chapter-1-scope-and-application/download) | 780 CMR 51.00 [UNVERIFIED] | unclear (no copyright notice seen on the source) |
-| MI | D | statewide | Michigan Residential Code 2015 (2015 IRC basis) remains in effect | UNVERIFIED (2015 MRC original effective date) | UNVERIFIED | Construction Code - Part 5. Residential Code (Mich. Admin. Code; rule numbers UNVERIFIED) | unclear (no copyright notice seen on the source) |
-| MN | B | statewide | 2020 Minnesota Residential Code (2018 IRC basis), Minn. R. ch. 1309 [UNVERIFIED] | March 31, 2020 | free online viewing per DLI [UNVERIFIED] | Minn. R. ch. 1309 | unclear (no copyright notice seen on the source) |
-| MS | C | local option | UNVERIFIED | UNVERIFIED | UNVERIFIED | Senate Bill 2378 (2014) (codified citation UNVERIFIED) | state copyright (notice on state source) |
-| MO | C | home rule | None statewide | n/a | n/a | n/a | unclear (no copyright notice seen on the source) |
-| MT | D | statewide | 2024 IRC (as amended by ARM 24.301) | September 26, 2026 | UNVERIFIED | ARM Title 24, Chapter 301 | unclear (no copyright notice seen on the source) |
-| NE | C | local option | IRC per Neb. Rev. Stat. 71-6403 (2018 edition UNVERIFIED in extracted text) | UNVERIFIED | yes [link](https://nebraskalegislature.gov/laws/statutes.php?statute=71-6403) | Neb. Rev. Stat. §§ 71-6403, 71-6406 | unclear (no copyright notice seen on the source) |
-| NV | C | local option | None statewide | n/a | n/a | NRS 278.580 | unclear (no copyright notice seen on the source) |
-| NH | D | statewide | 2024 IRC with New Hampshire amendments | July 1, 2026 | UNVERIFIED | RSA 155-A | unclear (no copyright notice seen on the source) |
-| NJ | A | statewide | International Residential Code/2024 (one- and two-family dwelling subcode, N.J.A.C. 5:23-3.21) | UNVERIFIED (N.J.A.C. 5:23-3 shows amendments R.2026 d.086 effective August 17, 2026; not isolated to 3.21) | yes [link](https://www.nj.gov/dca/codes/codreg/pdf_regs/njac_5_23_3.pdf) | N.J.A.C. 5:23-3.21 | state copyright (notice on state source) |
-| NM | A | statewide | 2021 New Mexico Residential Building Code (14.7.3 NMAC; 2021 IRC basis) [UNVERIFIED] | July 14, 2023 | yes [link](https://www.rld.nm.gov/wp-content/uploads/2024/09/14.7.3-NMRBC-Amendment-6.24.24-TKMR.pdf) | 14.7.3 NMAC | unclear (no copyright notice seen on the source) |
-| NY | B | statewide | 2025 Residential Code of New York State (publication date July 2025) | December 31, 2025 | free on ICC per DOS [UNVERIFIED] | 19 NYCRR Parts 1219-1229 | unclear (no copyright notice seen on the source) |
-| NC | D | statewide | 2018 North Carolina Residential Code | January 1, 2019 | UNVERIFIED | UNVERIFIED | unclear (no copyright notice seen on the source) |
-| ND | C | local option | Updated ND State Building Code (I-code edition UNVERIFIED) | January 1, 2026 | yes [link](https://www.commerce.nd.gov/sites/www/files/documents/Community%20Services/Building%20Codes/2025%20BLDGcode%20amendment%20schedule.pdf) | N.D.C.C. ch. 54-21.3 | unclear (no copyright notice seen on the source) |
-| OH | A | statewide | 2019 Residential Code of Ohio (updated to reflect the 2018 IRC) | July 1, 2019 | yes [link](https://dam.assets.ohio.gov/image/upload/com.ohio.gov/documents/bbst_ResidentialCodeofOhioEffectiveJuly1,2019.pdf) | OAC Chapter 4101:8 | unclear (no copyright notice seen on the source) |
-| OK | A | statewide | 2024 IRC with Oklahoma amendments (permanent rule) | September 14, 2026 | yes [link](https://oklahoma.gov/content/dam/ok/en/oubcc/documents/rules/2026%2009%2014%20IRC%202024%20Permanent%20Rule.pdf) | OAC 748:20 (UNVERIFIED on fetched page) | ICC copyright (model code text; notice on state source) |
-| OR | A | statewide | 2026 Oregon Residential Specialty Code (new); 2023 ORSC during phase-in | October 1, 2026 (six-month phase-in) | partial (errata/amendments free; integrated book via ICC) [link](https://www.oregon.gov/bcd/codes-stand/Documents/23orsc-errata.pdf) | OAR 918-480 (UNVERIFIED on fetched page) | unclear (no copyright notice seen on the source) |
-| PA | A | statewide | International Residential Code of 2021 (34 Pa. Code § 403.21) | January 1, 2026 | yes [link](https://www.pacodeandbulletin.gov/Display/pacode?d=&file=%2Fsecure%2Fpacode%2Fdata%2F034%2Fchapter403%2Fs403.21.html) | 34 Pa. Code § 403.21 [UNVERIFIED] | unclear (no copyright notice seen on the source) |
-| PR | D | UNVERIFIED | UNVERIFIED | UNVERIFIED | UNVERIFIED | UNVERIFIED | unclear (no copyright notice seen on the source) |
-| RI | A | statewide | IRC 2021 as the Rhode Island One & Two-Family Dwelling Code (SBC-2) | UNVERIFIED | yes (amendments); IRC text on ICC [link](https://rules.sos.ri.gov/Regulations/Part/510-00-00-2) | 510-RICR-00-00-2 [UNVERIFIED] | ICC copyright (model code text; notice on state source) |
-| SC | A | statewide | 2021 IRC with SC modifications (2021 South Carolina Residential Code) | January 1, 2023 | yes [link](https://llr.sc.gov/bcc/PDFfiles/2021-Code-Modifications.pdf) | UNVERIFIED | unclear (no copyright notice seen on the source) |
-| SD | C | local option | None statewide | n/a | n/a | SDCL ch. 11-10 [UNVERIFIED] | unclear (no copyright notice seen on the source) |
-| TN | D | statewide | 2018 IRC with amendments | July 16, 2020 | UNVERIFIED | Tenn. Code Ann. § 68-120-101 (rule chapter UNVERIFIED) | unclear (no copyright notice seen on the source) |
-| TX | C | local option | IRC statutory municipal minimum (edition as of May 1, 2012 - UNVERIFIED in extracted text); local adoption of later editions | UNVERIFIED (statute page not text-extractable) | n/a | Tex. Loc. Gov't Code § 214.212 | unclear (no copyright notice seen on the source) |
-| UT | A | statewide | 2021 IRC (Utah Code § 15A-2-103) | UNVERIFIED (statute version shown is effective 7/1/2024) | yes [link](https://le.utah.gov/xcode/Title15A/Chapter2/C15A-2-S103_2024070120240501.pdf) | Utah Code § 15A-2-103; Title 15A ch. 3 | unclear (no copyright notice seen on the source) |
-| VT | C | local option | No state residential building code listed (RBES energy standards only) | n/a (RBES revisions effective July 14, 2026) | n/a | UNVERIFIED | unclear (no copyright notice seen on the source) |
-| VA | A | statewide | 2021 Virginia Residential Code (2021 IRC as amended by VCC 310.8) | January 18, 2024 | yes [link](https://www.dhcd.virginia.gov/sites/default/files/DocX/building-codes-regulations/archive-codes/2021/2021-virginia-construction-code.pdf) | 13VAC5-63 (USBC) | state copyright (notice on state source) |
-| WA | A | statewide | 2021 IRC with Washington amendments (WAC 51-51) | March 15, 2024 | yes [link](https://apps.leg.wa.gov/wac/default.aspx?cite=51-51) | WAC 51-51 [UNVERIFIED] | state copyright (notice on state source) |
-| WV | C | local option | 2018 IRC (87CSR4 4.1.h) | August 1, 2022 | yes [link](https://firemarshal.wv.gov/media/39311/download?inline=) | W. Va. Code R. § 87-4 [UNVERIFIED] | unclear (no copyright notice seen on the source) |
-| WI | A | statewide | Uniform Dwelling Code, Wis. Admin. Code chs. SPS 320-325 (state-written) | UNVERIFIED (current register date) | yes [link](https://docs.legis.wisconsin.gov/document/administrativecode/ch.%20SPS%20320.pdf) | Wis. Admin. Code SPS 320-325 | unclear (no copyright notice seen on the source) |
-| WY | D | UNVERIFIED | UNVERIFIED | UNVERIFIED | UNVERIFIED | UNVERIFIED | unclear (no copyright notice seen on the source) |
+## Data
+
+The per-state records are not repeated here. See [`research/data/us-state-codebooks-DRAFT.csv`](../research/data/us-state-codebooks-DRAFT.csv) or [`research/data/us-state-codebooks-DRAFT.json`](../research/data/us-state-codebooks-DRAFT.json): 52 rows (50 states, DC and Puerto Rico), 24 columns. The columns are `state`, `name`, `map_category`, `map_category_label`, `agency`, `agency_url`, `scope`, `scope_note`, `residential_code`, `residential_effective`, `building_code`, `state_book_url`, `state_book_desc`, `state_book_free`, `icc_state_page`, `icc_free_readonly`, `admin_citation`, `admin_url`, `copyright_notice`, `copyright_notice_source`, `copyright_notice_seen`, `date_verified`, `source_urls` and `evidence_checked`.
 
 ## Unverified items
 
-- **States with category D:** FL (Florida), MI (Michigan), MT (Montana), NH (New Hampshire), NC (North Carolina), PR (Puerto Rico), TN (Tennessee), WY (Wyoming).
-- **Fields still marked UNVERIFIED in other states:** see the CSV. The main ones are effective dates for AL, DC, ID, ME, MD, MI, NE, NJ, RI, TX, UT and WI, and admin citations for AR, CO, GA, NC and SC.
+- **Category D states:** FL, MI, MT, NH, NC, PR, TN, WY.
+- **Count:** 177 of 1,248 cells (52 rows by 24 columns) contain UNVERIFIED. By field: `icc_free_readonly` 47, `building_code` 32, `admin_citation` 29, `residential_effective` 15, `state_book_free` 13, `residential_code` 12, `scope_note` 9, `copyright_notice` 8, `copyright_notice_seen` 8, `agency` 2, `scope` 2.
 - **Free read-only status on ICC:** UNVERIFIED for every state except NY, IN, MN and CA, where the state's own page describes no-cost viewing.
+- **Puerto Rico** has no official source page and no source URL; all of its substantive fields are UNVERIFIED.
+- **Utah:** the statute version cited is marked superseded 7/1/2025 on the fetched PDF; its edition and effective date need re-checking against the current version.
 
 ## Attribution
 
-The code information comes from these adopting agencies. Each is credited and linked:
+ORI compiled these adoption facts from the public pages of the agencies below. Each agency is listed as a source only. No agency provided, reviewed or endorsed this research layer, and listing one implies no affiliation with ORI.
 
 - Alabama: Alabama Home Builders Licensure Board (residential code adoption authority since Act 2024-443); Alabama Division of Construction Management (state-jurisdiction buildings). https://dcm.alabama.gov/bldg_code.aspx
 - Alaska: Alaska Department of Public Safety, Division of Fire and Life Safety. https://dps.alaska.gov/fire/plan-review/
@@ -164,7 +121,7 @@ The code information comes from these adopting agencies. Each is credited and li
 - Oklahoma: Oklahoma Uniform Building Code Commission (OUBCC). https://oklahoma.gov/oubcc/codes-and-rules.html
 - Oregon: Oregon Building Codes Division (BCD). https://www.oregon.gov/bcd/codes-stand/Pages/residential-structures.aspx
 - Pennsylvania: PA Department of Labor & Industry, Uniform Construction Code. https://www.pa.gov/agencies/dli/programs-services/labor-management-relations/bureau-of-occupational-and-industrial-safety/uniform-construction-code.html
-- Puerto Rico: UNVERIFIED (OGPe per third-party notice). (no official page confirmed)
+- Puerto Rico: UNVERIFIED (no official page confirmed).
 - Rhode Island: RI Building Code Standards Committee (State Building Code Office). https://rules.sos.ri.gov/Regulations/Part/510-00-00-2
 - South Carolina: SC Building Codes Council (LLR). https://www.llr.sc.gov/bcc/
 - South Dakota: No statewide residential code (municipal ordinances; SDCL ch. 11-10). https://sdlegislature.gov/Statutes/11-10
@@ -178,6 +135,8 @@ The code information comes from these adopting agencies. Each is credited and li
 - Wisconsin: Wisconsin Department of Safety and Professional Services (DSPS). https://dsps.wi.gov/a-z-programs-list/udc/
 - Wyoming: Wyoming State Fire Marshal (state-adopted codes; residential scope UNVERIFIED). https://wsfm.wyo.gov/
 
-- **International Code Council (ICC):** publisher of the International Residential Code®, International Building Code® and related I-Codes, and host of ICC Digital Codes (https://codes.iccsafe.org/). State pages are linked, not reproduced. IRC, IBC and I-Codes are ICC marks.
-- **Map boundaries:** U.S. Census Bureau, Cartographic Boundary File cb_2024_us_state_500k (public domain).
+- **International Code Council (ICC):** publisher of the International Residential Code®, International Building Code® and related I-Codes, and host of ICC Digital Codes (https://codes.iccsafe.org/). State pages are linked, not reproduced. IRC, IBC and I-Codes are ICC marks, used here only to name the codes.
+- **Map boundaries:** derived from the U.S. Census Bureau Cartographic Boundary File cb_2024_us_state_500k (public domain; source: U.S. Census Bureau).
 - **Status lookups:** U.S. DOE Building Energy Codes Program state pages (energycodes.gov), used for "None Statewide" (AZ, KS, MO, CO).
+
+ORI is not affiliated with, sponsored by or endorsed by ICC, any state agency or the U.S. Census Bureau.
