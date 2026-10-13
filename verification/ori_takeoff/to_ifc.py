@@ -104,7 +104,7 @@ def overlay_to_ifc(doc: dict, path: str | Path, name: str | None = None) -> dict
         if not known:
             elev = z_next
         ftf = st.get("floor_to_floor_in") or st.get("noted_floor_to_floor_in")
-        ceil = st.get("ceiling_height_in")
+        ceil = st.get("ceiling_height_in") or st.get("noted_ceiling_height_in")
         storey = api.run("root.create_entity", b.f, ifc_class="IfcBuildingStorey", name=st.get("name") or f"Page {p['page']} {p.get('page_label')}")
         storey.Elevation = float(elev * MM)
         storey.ObjectPlacement = b.placement(0, 0, elev * MM)
@@ -116,7 +116,7 @@ def overlay_to_ifc(doc: dict, path: str | Path, name: str | None = None) -> dict
         wall_h = ftf or PLACEHOLDER_STOREY_IN
         wall_src = ("sheet_note_unconfirmed" if st.get("noted_floor_to_floor_in") and not st.get("floor_to_floor_in") else "overlay") if ftf else "placeholder_not_from_plan"
         space_h = ceil or PLACEHOLDER_STOREY_IN
-        space_src = "overlay" if ceil else "placeholder_not_from_plan"
+        space_src = ("sheet_note_unconfirmed" if st.get("noted_ceiling_height_in") and not st.get("ceiling_height_in") else "overlay") if ceil else "placeholder_not_from_plan"
         if wall_src == "placeholder_not_from_plan":
             summary["placeholders"].append(f"page {p['page']}: wall height")
         if space_src == "placeholder_not_from_plan":

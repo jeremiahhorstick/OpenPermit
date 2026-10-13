@@ -107,7 +107,7 @@ replaces). Confidences are **uncalibrated heuristic scores**, not probabilities.
 |---|---|---|
 | Vector PDF | pdfplumber (MIT): lines, rects, curves with path commands, characters | Bézier runs are fitted to circles (door swings). Characters are grouped into text runs along their writing direction, so rotated dimension text works |
 | DXF | ezdxf (MIT): LINE, LWPOLYLINE, POLYLINE, ARC, TEXT, MTEXT, DIMENSION, INSERT (exploded) | Units from `$INSUNITS`. Layer names matching `WALL` mark wall candidates |
-| Raster PDF / images | none | Page `kind: raster`, `status: needs_tracing`, no elements. Out of scope for v0.1 |
+| Raster PDF / images | none | Page `kind: raster`, `status: needs_tracing`, no elements. A separate recognition track (unverified output, never IFC) is in [`RASTER-TAKEOFF-0.1-DRAFT.md`](RASTER-TAKEOFF-0.1-DRAFT.md) |
 | DWG | none | Needs a converter; the common one is proprietary (survey §6) |
 
 PyMuPDF (AGPL) is not used. No GPL floor-plan code and no NonCommercial data is used.
