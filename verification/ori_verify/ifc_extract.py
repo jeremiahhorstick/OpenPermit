@@ -318,7 +318,7 @@ class IfcFacts:
         if not subject.subject_id.startswith("ifc:"):
             return subject
         try:
-            el = self.f.by_guid(subject.subject_id.split(":", 1)[1])
+            el = self.f.by_guid(subject.subject_id.split(":", 1)[1].split("#", 1)[0])
         except RuntimeError:
             return subject
         tp = uel.get_pset(el, "Pset_ORI_Takeoff") or {}
@@ -348,8 +348,13 @@ class IfcFacts:
                     self.adjustments.append(f"{subject.label}: {k} relabelled unconfirmed (not reviewed)")
         return subject
 
+    def framing_subjects(self) -> list[Subject]:
+        from .framing_extract import framing_subjects
+        return framing_subjects(self)
+
     def subjects(self) -> list[Subject]:
         subs = self.stair_subjects() + self.space_subjects() + self.eero_subjects() + self.deck_and_guard_subjects()
+        subs += self.framing_subjects()
         return [self._takeoff_policy(s) for s in subs]
 
 

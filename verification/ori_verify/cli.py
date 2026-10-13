@@ -4,7 +4,7 @@
   python -m ori_verify.cli ifc MODEL.ifc --out report.json [--bcf issues.bcf] [--jurisdiction base]
   python -m ori_verify.cli declared VALUES.json [--manifest MANIFEST.json] --out report.json [--bcf issues.bcf]
   python -m ori_verify.cli manifest PLANS.pdf [...] --plan-set ID --version N --by WHO --at ISO [--supersedes ID ...] --out manifest.json
-  python -m ori_verify.cli fixtures OUTDIR     # write the synthetic pass/fail/incomplete IFC models
+  python -m ori_verify.cli fixtures OUTDIR     # write the synthetic pass/fail/incomplete IFC models (ch03 and ch06)
 
 All outputs are labeled reviewer evidence, not approval.
 """
@@ -20,7 +20,7 @@ from . import EVIDENCE_LABEL
 from . import bcf as bcfmod
 from . import declared as dec
 from .facts import USABLE_ORIGINS
-from . import ifc_extract, ifc_fixtures, pdf_manifest, records, rules, units
+from . import framing_fixtures, ifc_extract, ifc_fixtures, pdf_manifest, records, rules, units
 
 
 def _jur(value: str) -> str | None:
@@ -83,6 +83,8 @@ def main(argv=None) -> int:
         out = Path(ns.outdir)
         for name, spec in (("pass", ifc_fixtures.passing_spec()), ("fail", ifc_fixtures.failing_spec()), ("incomplete", ifc_fixtures.incomplete_spec())):
             print(ifc_fixtures.write_fixture(spec, out / f"ori-ch03-{name}.ifc"))
+        for p in framing_fixtures.write_all(out):
+            print(p)
         return 0
     Path(ns.out).write_text(records.dumps(report))
     print(f"{EVIDENCE_LABEL}: {report['counts']} -> {ns.out}")
