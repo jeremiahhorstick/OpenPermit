@@ -22,7 +22,7 @@ def build(out, base_url):
         src = ROOT / name
         if src.exists():
             shutil.copy2(src, out / name)
-    for name in ["spec", "profiles", "rules", "docs", "conformance", "verification/examples", ".well-known", "LICENSES"]:
+    for name in ["spec", "profiles", "rules", "docs", "conformance", "verification/examples", "model-verification", ".well-known", "LICENSES"]:
         src = ROOT / name
         for path in sorted(src.rglob("*")):
             if path.is_file() and path.suffix not in {".py", ".pyc"} and "__pycache__" not in path.parts:
