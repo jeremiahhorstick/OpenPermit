@@ -19,6 +19,7 @@ from pathlib import Path
 from . import EVIDENCE_LABEL
 from . import bcf as bcfmod
 from . import declared as dec
+from .facts import USABLE_ORIGINS
 from . import ifc_extract, ifc_fixtures, pdf_manifest, records, rules, units
 
 
@@ -30,8 +31,18 @@ def run_ifc(path, jurisdiction=units.VA, executed_at=None):
     eff = units.implemented_units(_jur(jurisdiction))
     band = eff and next((u.param("guard_trigger_horizontal_band") for u in eff if u.param("guard_trigger_horizontal_band")), None)
     subjects, artifact = ifc_extract.extract(path, guard_band_in=band["quantity"]["value"] if band else 36.0)
+    adjustments = artifact.pop("takeoff_adjustments", None)
+    n_takeoff = artifact.pop("takeoff_elements", 0)
     results = rules.evaluate(subjects, eff)
-    return records.build_report(results, eff, artifact, "ifc_model", jurisdiction, executed_at)
+    report = records.build_report(results, eff, artifact, "ifc_model", jurisdiction, executed_at)
+    if n_takeoff:
+        report["takeoff_adjustments"] = adjustments
+        report["provenance_warning"] = (f"{n_takeoff} subject(s) come from a plan takeoff (Pset_ORI_Takeoff). Placeholder heights were "
+                                        "removed and unreviewed auto-extracted values were treated as unconfirmed (unknown).")
+        report["auto_extracted_pass"] = sum(
+            1 for r in results if r.state == rules.PASS
+            and any(f.origin not in USABLE_ORIGINS for f in r.subject.facts.values()))
+    return report
 
 
 def run_declared(doc, manifest=None, jurisdiction=None, executed_at=None, path=None):
@@ -51,6 +62,8 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(prog="ori_verify", description=f"ORI reference evaluator. {EVIDENCE_LABEL}.")
     sub = ap.add_subparsers(dest="cmd", required=True)
     a = sub.add_parser("ifc"); a.add_argument("model"); a.add_argument("--out", required=True); a.add_argument("--bcf"); a.add_argument("--jurisdiction", default=units.VA)
+    a.add_argument("--no-strict", dest="strict", action="store_false",
+                   help="do not exit 2 when a pass rests on a subject with unconfirmed takeoff facts (strict is the default)")
     d = sub.add_parser("declared"); d.add_argument("values"); d.add_argument("--manifest"); d.add_argument("--out", required=True); d.add_argument("--bcf")
     m = sub.add_parser("manifest"); m.add_argument("pdfs", nargs="+"); m.add_argument("--plan-set", required=True); m.add_argument("--version", type=int, required=True)
     m.add_argument("--by", required=True); m.add_argument("--at", required=True); m.add_argument("--supersedes", nargs="*", default=[]); m.add_argument("--out", required=True)
@@ -76,6 +89,11 @@ def main(argv=None) -> int:
     if ns.bcf:
         _, n = bcfmod.write_bcf(report, ns.bcf)
         print(f"BCF topics (fail + unknown): {n} -> {ns.bcf}")
+    if report.get("takeoff_adjustments") is not None:
+        print(f"takeoff provenance adjustments: {len(report['takeoff_adjustments'])}")
+    if ns.cmd == "ifc" and ns.strict and report.get("auto_extracted_pass"):
+        print(f"STRICT: {report['auto_extracted_pass']} pass record(s) rest on unconfirmed takeoff facts", file=sys.stderr)
+        return 2
     return 0
 
 
