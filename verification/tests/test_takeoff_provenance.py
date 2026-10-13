@@ -53,8 +53,14 @@ def test_placeholder_and_unreviewed_give_no_pass_via_ori_verify():
     assert rep["counts"]["fail"] == 0
     assert rep["counts"]["unknown"] == sum(rep["counts"].values())
     assert rep["takeoff_adjustments"]
-    assert "provenance_warning" in rep
+    assert "provenance_warning" in rep and "adjustment(s)" in rep["provenance_warning"]
     assert rep["auto_extracted_pass"] == 0
+
+
+def test_warning_does_not_claim_adjustments_for_ground_truth():
+    rep = cli.run_ifc(GT, executed_at=AT)
+    assert rep["takeoff_adjustments"] == []
+    assert "No adjustments were needed" in rep["provenance_warning"]
 
 
 def test_placeholder_heights_removed_unreviewed_relabelled():

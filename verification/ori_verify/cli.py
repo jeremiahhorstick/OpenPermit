@@ -37,8 +37,11 @@ def run_ifc(path, jurisdiction=units.VA, executed_at=None):
     report = records.build_report(results, eff, artifact, "ifc_model", jurisdiction, executed_at)
     if n_takeoff:
         report["takeoff_adjustments"] = adjustments
-        report["provenance_warning"] = (f"{n_takeoff} subject(s) come from a plan takeoff (Pset_ORI_Takeoff). Placeholder heights were "
-                                        "removed and unreviewed auto-extracted values were treated as unconfirmed (unknown).")
+        report["provenance_warning"] = (
+            f"{n_takeoff} subject(s) come from a plan takeoff (Pset_ORI_Takeoff). " + (
+                f"{len(adjustments)} adjustment(s): placeholder heights were removed and unreviewed auto-extracted "
+                "values were treated as unconfirmed (unknown)." if adjustments else
+                "No adjustments were needed: every takeoff value was authored ground truth or reviewed."))
         report["auto_extracted_pass"] = sum(
             1 for r in results if r.state == rules.PASS
             and any(f.origin not in USABLE_ORIGINS for f in r.subject.facts.values()))
