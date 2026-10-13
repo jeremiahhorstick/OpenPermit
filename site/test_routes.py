@@ -19,6 +19,7 @@ class Routes(unittest.TestCase):
             root = Path(tmp)
             self.assertEqual(builder.build(root, "https://corelotorg.github.io/OpenPermit/"), 5)
             self.assertEqual(checker.check(root), [])
+            self.assertTrue((root / "model-verification/stud-wall.html").is_file())
             (root / "spec/index.html").unlink()
             self.assertTrue(checker.check(root))
             builder.build(root, "https://openpermit.dev/")
