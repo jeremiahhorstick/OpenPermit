@@ -30,7 +30,7 @@ Patterns use `*` for one path segment and `**` for any depth. The first matching
 
 | Path | Licence | Note |
 |---|---|---|
-| `**/*.py`, `**/*.sh`, `reference-node/Dockerfile`, `.github/workflows/*.yml`, `verification/ori_takeoff/editor/index.html` | Apache-2.0 | code |
+| `**/*.py`, `**/*.sh`, `reference-node/Dockerfile`, `.github/workflows/*.yml`, `verification/ori_takeoff/editor/index.html`, `model-verification/stud-wall.html` | Apache-2.0 | code |
 | `LICENSE`, `LICENSES/**`, `research/licenses/*` except `*.md` | each text's own terms | licence texts and third-party rights records, kept verbatim |
 | `README.md`, `CHARTER.md`, `GOVERNANCE.md`, `CONTRIBUTING.md`, `LICENSE-SPEC.md`, `docs/ECOSYSTEM.md`, `conformance/README.md`, `reference-node/README.md`, `index.html`, `llms.txt`, `robots.txt`, `sitemap.xml`, `.well-known/ori.json` | CC0-1.0 | previously published under the CC0 notice; stays CC0 |
 | `spec/ori-core-0.1-draft.md`, `spec/model-interface-0.1-draft.md`, `spec/precedence-graph-0.1-draft.md`, `spec/challenge-protocol-0.1-draft.md`, `spec/evidence-attestation-0.1-draft.md`, `spec/capability-registry-0.1-draft.md` | CC0-1.0 | previously published under the CC0 notice; stays CC0 |
